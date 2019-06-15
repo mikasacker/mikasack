@@ -15,6 +15,7 @@
 	<script src="JS/three.js"></script>
 	<script src="JS/CopyShader.js"></script>
 	<script src="JS/DigitalGlitch.js"></script>
+	<script src="JS/FXAAShader.js"></script>
 	<script src="JS/LuminosityHighPassShader.js"></script>
 	<script src="JS/EffectComposer.js"></script>
 	<script src="JS/ShaderPass.js"></script>
@@ -80,6 +81,10 @@
 		composer.addPass(glitch_pass);
 
 		glitch_pass.renderToScreen = true;*/
+
+		effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
+		effectFXAA.uniforms.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight );
+		composer.addPass(effectFXAA);
 
 		var bloom_pass = new THREE.UnrealBloomPass(new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.73);
 		composer.addPass(bloom_pass);
