@@ -78,7 +78,9 @@
 
 		loader.load('Obj/batman.obj');
 
-		var mesh = THREE.Mesh(loader, material);
+		var geometry = new THREE.Geometry().fromBufferGeometry( loader );
+
+		var mesh = THREE.Mesh(geometry, material);
 
 		scene.add(mesh);
 	
