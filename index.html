@@ -13,7 +13,12 @@
 <body>
 
 	<script src="JS/three.js"></script>
+	<script src="JS/ShaderPass.js"></script>
+	<script src="JS/CopyShader.js"></script>
 	<script src="JS/EffectComposer.js"></script>
+	<script src="JS/RenderPass.js"></script>
+	<script src="JS/DigitalGlitch.js"></script>
+	<script src="JS/GlitchPass.js"></script>
 	<script src="JS/OBJLoader.js"></script>
 	<script>
 		var renderer = new THREE.WebGLRenderer({antialias: true});
@@ -66,6 +71,13 @@
 
 		var composer = new THREE.EffectComposer(renderer);
 		composer.setSize(512, 512);
+
+		composer.addPass(new THREE.RenderPass(scene, camera));
+
+		var glitch_pass = new THREE.GlitchPass();
+		composer.addPass(glitch_pass);
+
+		glitch_pass.renderToScreen = true;
 
 		//render
 
