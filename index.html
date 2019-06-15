@@ -14,11 +14,6 @@
 
 	<script src="JS/three.js"></script>
 	<script src="JS/OBJLoader.js"></script>
-	<script src="JS/CopyShader.js"></script>
-	<script src="JS/ShaderPass.js"></script>
-	<script src="JS/RenderPass.js"></script>
-	<script src="JS/FXAAShader.js"></script>
-	<script src="JS/EffectComposer.js"></script>
 	<script>
 		var renderer = new THREE.WebGLRenderer({antialias: true});
 		renderer.setClearColor(0x000000);
@@ -67,22 +62,7 @@
 
 		/*composing*/
 
-		var composer = new THREE.EffectComposer(renderer);
-		composer.addPass(new THREE.RenderPass(scene, camera));
 
-		effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
-		effectFXAA.uniforms.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight );
-		composer.addPass(effectFXAA);
-
-		bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.73);
-		composer.addPass(bloomPass);
-
-		renderer.toneMapping = THREE.LinearToneMapping;
-		renderer.toneMappingExposure = Math.pow( 1, 4.0 );
-
-		copyShader = new THREE.ShaderPass(THREE.CopyShader);
-		copyShader.renderToScreen = true;
-		composer.addPass(copyShader);
 		
 
 		//render
@@ -90,7 +70,7 @@
 		function render(){
 			group.rotation.y += 0.01;
 			requestAnimationFrame(render);
-			composer.render();
+			renderer.render();
 		}
 
 		render();
