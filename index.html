@@ -77,19 +77,19 @@
 
 		composer.addPass(new THREE.RenderPass(scene, camera));
 
-		/*var glitch_pass = new THREE.GlitchPass();
+		var glitch_pass = new THREE.GlitchPass();
 		composer.addPass(glitch_pass);
 
-		glitch_pass.renderToScreen = true;*/
+		glitch_pass.renderToScreen = true;
 
-		effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
+		/*effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
 		effectFXAA.uniforms.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight );
 		composer.addPass(effectFXAA);
 
 		var bloom_pass = new THREE.UnrealBloomPass(new THREE.Vector2( window.innerWidth, window.innerHeight ), 3, 5, 0.73);
 		composer.addPass(bloom_pass);
 
-		bloom_pass.renderToScreen = true;
+		bloom_pass.renderToScreen = true;*/
 
 		//render
 
