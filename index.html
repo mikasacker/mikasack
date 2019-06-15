@@ -13,6 +13,7 @@
 <body>
 
 	<script src="JS/three.js"></script>
+	<script src="EffectComposer.js"></script>
 	<script src="JS/OBJLoader.js"></script>
 	<script>
 		var renderer = new THREE.WebGLRenderer({antialias: true});
@@ -63,14 +64,16 @@
 		/*composing*/
 
 
-		
+		var composer = new THREE.EffectComposer(renderer);
+		composer.setSize(512, 512);
 
 		//render
 
 		function render(){
 			group.rotation.y += 0.01;
 			requestAnimationFrame(render);
-			renderer.render(scene, camera);
+			//renderer.render(scene, camera);
+			composer.render();
 		}
 
 		render();
