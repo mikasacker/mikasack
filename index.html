@@ -34,8 +34,8 @@
 
 		var material = new THREE.MeshStandardMaterial({
 			color: 0xffffff,
-			roughness: 0.5,
-			metalness: 0.7,
+			roughness: 0.3,
+			metalness: 0.8,
 			wireframe: true
 		});
 
@@ -44,7 +44,6 @@
 
 		var geometry = new THREE.Geometry();
 		var group = new THREE.Object3D();
-		var man;
 
 		loader.load('Obj/batman.obj', function(object){
 			//geometry = object.geometry;
@@ -75,18 +74,7 @@
 		//batman.position.z = -10;
 		//scene.add(batman);
 
-		var geometry2 = new THREE.BoxGeometry(90, 90, 90);
-		var mesh2 = new THREE.Mesh(geometry2, material);
-
-		mesh2.position.set(300, 0, -800);
-
-		scene.add(mesh2);
-		console.log(group);
-
 		function render(){
-			mesh2.rotation.x += 0.01;
-			mesh2.rotation.y += 0.01;
-			group.rotation.x += 0.01;
 			group.rotation.y += 0.01;
 			requestAnimationFrame(render);
 			renderer.render(scene, camera);
