@@ -77,13 +77,13 @@
 		mesh2.position.set(300, 0, -800);
 
 		scene.add(mesh2);
-	
+		console.log(batman);
 
 		function render(){
 			mesh2.rotation.x += 0.01;
 			mesh2.rotation.y += 0.01;
-			batman.rotation.x += 0.01;
-			batman.rotation.y += 0.01;
+			//batman.rotation.x += 0.01;
+			//batman.rotation.y += 0.01;
 			requestAnimationFrame(render);
 			renderer.render(scene, camera);
 		}
