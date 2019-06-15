@@ -53,8 +53,7 @@
 				geometry.vertices.push(object.children[i].geometry.vertices);
 				geometry.faces.push(object.children[i].geometry.faces);
 			}*/
-			man = object;
-  		  	man.traverse(function (child) {
+  		  	object.traverse(function (child) {
         		if (child instanceof THREE.Mesh) {
         	    child.geometry.computeFaceNormals();
         	    child.geometry.computeVertexNormals( true );
@@ -63,8 +62,8 @@
         		}
         	
             });
-            man.position.z = -10;
-            scene.add(man);
+            group.position.z = -10;
+            scene.add(group);
         }
 	    );
 
