@@ -44,21 +44,21 @@
 
 		var geometry = new THREE.Geometry();
 		var group = new THREE.Group();
+		var man;
 
 		loader.load('Obj/batman.obj', function(object){
 			//geometry = object.geometry;
-			console.log(object);
+			//console.log(object);
 			/*for(var i = 0; i < object.children.length; ++i){
 				geometry.vertices.push(object.children[i].geometry.vertices);
 				geometry.faces.push(object.children[i].geometry.faces);
 			}*/
-			var man = object;
+			man = object;
   		  	man.traverse(function (child) {
         		if (child instanceof THREE.Mesh) {
         	    child.geometry.computeFaceNormals();
-        	    child.geometry.computeVertexNormals( true );
+        	    chlid.geometry.computeVertexNormals( true );
         	    child.material = material;
-        	    //group.add(child);
         		}
         	
             });
@@ -81,7 +81,7 @@
 		mesh2.position.set(300, 0, -800);
 
 		scene.add(mesh2);
-		//console.log(batman);
+		console.log(man);
 
 		function render(){
 			mesh2.rotation.x += 0.01;
