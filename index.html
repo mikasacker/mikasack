@@ -52,13 +52,13 @@
 				geometry.vertices.push(object.children[i].geometry.vertices);
 				geometry.faces.push(object.children[i].geometry.faces);
 			}*/
-			man = object;
+			var man = object;
   		  	man.traverse(function (child) {
         		if (child instanceof THREE.Mesh) {
         	    child.geometry.computeFaceNormals();
         	    child.geometry.computeVertexNormals( true );
         	    child.material = material;
-        	    group.add(child);
+        	    //group.add(child);
         		}
         	
             });
