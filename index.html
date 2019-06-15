@@ -43,7 +43,6 @@
 		var loader = new THREE.OBJLoader();
 
 		var geometry = new THREE.Geometry();
-		var batman;
 
 		loader.load('Obj/batman.obj', function(object){
 			//geometry = object.geometry;
@@ -70,6 +69,7 @@
 		geometry.computeVertexNormals(true);
 		//geometry.addAttribute( 'position', new THREE.BufferAttribute( geometry.vertices, 3 ) );
 		var batman = new THREE.Mesh(geometry, material);
+		batman.position.z = -10;
 		scene.add(batman);
 
 		var geometry2 = new THREE.BoxGeometry(90, 90, 90);
