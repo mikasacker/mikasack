@@ -47,7 +47,7 @@
 
 		loader.load('Obj/batman.obj', function(object){
 			//geometry = object.geometry;
-
+			console.log(object);
 			for(var i = 0; i < object.children.length; ++i){
 				geometry.vertices.push(object.children[i].geometry.vertices);
 				geometry.faces.push(object.children[i].geometry.faces);
