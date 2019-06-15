@@ -48,11 +48,11 @@
 		loader.load('Obj/batman.obj', function(object){
 			//geometry = object.geometry;
 			console.log(object);
-			/*for(var i = 0; i < object.children.length; ++i){
+			for(var i = 0; i < object.children.length; ++i){
 				geometry.vertices.push(object.children[i].geometry.vertices);
 				geometry.faces.push(object.children[i].geometry.faces);
-			}*/
-			batman = object;
+			}
+			/*batman = object;
   		  	batman.traverse(function (child) {
         		if (child instanceof THREE.Mesh) {
         	    child.geometry.computeFaceNormals();
@@ -61,15 +61,16 @@
         	}
             });
             batman.position.z = -10;
-            scene.add(batman);
+            scene.add(batman);*/
         }
 	    );
 
 
-		//geometry.computeFaceNormals();
-		//geometry.computeVertexNormals();
+		geometry.computeFaceNormals();
+		geometry.computeVertexNormals(true);
 		//geometry.addAttribute( 'position', new THREE.BufferAttribute( geometry.vertices, 3 ) );
-
+		var batman = new THREE.Mesh(geometry, material);
+		scene.add(batman);
 
 		var geometry2 = new THREE.BoxGeometry(90, 90, 90);
 		var mesh2 = new THREE.Mesh(geometry2, material);
