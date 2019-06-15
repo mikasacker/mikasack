@@ -77,10 +77,10 @@
 
 		composer.addPass(new THREE.RenderPass(scene, camera));
 
-		var glitch_pass = new THREE.GlitchPass();
+		/*var glitch_pass = new THREE.GlitchPass();
 		composer.addPass(glitch_pass);
 
-		glitch_pass.renderToScreen = true;
+		glitch_pass.renderToScreen = true;*/
 
 		effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
 		effectFXAA.uniforms.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight );
