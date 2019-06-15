@@ -42,9 +42,7 @@
 
 
 		var material = new THREE.MeshLambertMaterial({
-			color: 0xffffff,
-			transparency: true,
-			opacity: 0.5,
+			color: 0xf00ffff,
 			emissive: 0x00FFFF,
 			emissiveIntensity: 10,
 			wireframe: true
@@ -74,7 +72,7 @@
 		/*composing*/
 
 
-		/*var composer = new THREE.EffectComposer(renderer);
+		var composer = new THREE.EffectComposer(renderer);
 		composer.setSize(512, 512);
 
 		composer.addPass(new THREE.RenderPass(scene, camera));
@@ -91,15 +89,19 @@
 		var bloom_pass = new THREE.UnrealBloomPass(new THREE.Vector2( window.innerWidth, window.innerHeight ), 3, 5, 0.73);
 		composer.addPass(bloom_pass);
 
-		bloom_pass.renderToScreen = true;*/
+		bloom_pass.renderToScreen = true;
+
+		renderer.gammaInput = true;
+		renderer.gammaOutput = true;
+		renderer.toneMappingExposure = Math.pow( 0.9, 4.0 ) ;
 
 		//render
 
 		function render(){
 			group.rotation.y += 0.01;
 			requestAnimationFrame(render);
-			renderer.render(scene, camera);
-			//composer.render();
+			//renderer.render(scene, camera);
+			composer.render();
 		}
 
 		render();
