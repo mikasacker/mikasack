@@ -19,6 +19,7 @@
 	<script src="JS/ShaderPass.js"></script>
 	<script src="JS/RenderPass.js"></script>
 	<script src="JS/GlitchPass.js"></script>
+	<script src="JS/UnrealBloomPass.js"></script>
 	<script src="JS/OBJLoader.js"></script>
 	<script>
 		var renderer = new THREE.WebGLRenderer({antialias: true});
@@ -74,10 +75,15 @@
 
 		composer.addPass(new THREE.RenderPass(scene, camera));
 
-		var glitch_pass = new THREE.GlitchPass();
+		/*var glitch_pass = new THREE.GlitchPass();
 		composer.addPass(glitch_pass);
 
-		glitch_pass.renderToScreen = true;
+		glitch_pass.renderToScreen = true;*/
+
+		var bloom_pass = new THREE.UnrealBloomPass(new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.73);
+		composer.addPass(bloom_pass);
+
+		bloom_pass.renderToScreen = true;
 
 		//render
 
