@@ -76,9 +76,7 @@
 
 		var loader = new THREE.OBJLoader();
 
-		loader.load('Obj/batman.obj');
-
-		var geometry = new THREE.Geometry().fromBufferGeometry( loader );
+		var geometry = new THREE.Geometry().fromBufferGeometry( loader.load('Obj/batman.obj') );
 
 		var mesh = THREE.Mesh(geometry, material);
 
