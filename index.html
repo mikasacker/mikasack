@@ -12,19 +12,18 @@
 </head>
 <body>
 
-	<canvas id="myc"></canvas>
-
 	<script src="JS/three.js"></script>
 	<script src="JS/OBJLoader.js"></script>
 	<script>
-		var renderer = new THREE.WebGLRenderer({canvas: document.getElementById('myc'), antialias: true});
+		var renderer = new THREE.WebGLRenderer({antialias: true});
 		renderer.setClearColor(0x000000);
 		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setSize(window.innerWidth, window.innerHeight);
-
-		var camera = new THREE.PerspectiveCamera(35, window.innerWidth/ window.innerHeight, 0.1, 3000);
+		document.body.appendChild( renderer.domElement );
 
 		var scene = new THREE.Scene();
+
+		var camera = new THREE.PerspectiveCamera(35, window.innerWidth/ window.innerHeight, 0.1, 3000);
 
 		var light  = new THREE.AmbientLight(0xffffff, 0.5);
 		scene.add(light);
@@ -40,39 +39,6 @@
 			wireframe: true
 		});
 
-		//var material = new THREE.PointsMaterial();
-
-		/*var geometry = new THREE.BoxGeometry(100, 100,100);
-		var mesh = new THREE.Points(geometry, material);
-		mesh.position.z = -1000;
-		mesh.position.x = -100;
-		scene.add(mesh);
-
-		var geometry2 = new THREE.SphereGeometry(50, 20, 20);
-		var mesh2 = new THREE.Points(geometry2, material);
-		mesh2.position.z = -1000;
-		mesh2.position.x = 100;
-		scene.add(mesh2);*/
-
-		//mesh.computeLineDistances();
-		//mesh2.computeLineDistances();
-
-		/*composer = new THREE.EffectComposer( renderer );
-		composer.addPass( new THREE.RenderPass( scene, camera ) );
-
-		effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
-		effectFXAA.uniforms.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight );
-		composer.addPass(effectFXAA);
-
-		bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.73);
-		composer.addPass(bloomPass);
-
-		copyShader = new THREE.ShaderPass(THREE.CopyShader);
-		copyShader.renderToScreen = true;
-		composer.addPass(copyShader);
-	
-		renderer.toneMapping = THREE.LinearToneMapping;
-		renderer.toneMappingExposure = Math.pow( 1, 4.0 );*/
 
 		var loader = new THREE.OBJLoader();
 
@@ -82,16 +48,17 @@
 			geometry = object.geometry;
 		});
 
-		var mesh = THREE.Mesh(geometry, material);
+		var mesh = new THREE.Mesh(geometry, material);
+		mesh.position.z = -1000;
 
 		scene.add(mesh);
 	
 
-		var render = function(){
+		function render(){
 			mesh.rotation.x += 0.01;
 			mesh.rotation.y += 0.01;
 			requestAnimationFrame(render);
-			renderer.render();
+			renderer.render(scene, camera);
 		}
 
 		render();
