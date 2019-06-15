@@ -12,6 +12,7 @@
 </head>
 <body>
 
+	<script src="JS/EffectComposer.js"></script>
 	<script src="JS/three.js"></script>
 	<script src="JS/OBJLoader.js"></script>
 	<script>
@@ -46,18 +47,12 @@
 		var group = new THREE.Object3D();
 
 		loader.load('Obj/batman.obj', function(object){
-			//geometry = object.geometry;
-			//console.log(object);
-			/*for(var i = 0; i < object.children.length; ++i){
-				geometry.vertices.push(object.children[i].geometry.vertices);
-				geometry.faces.push(object.children[i].geometry.faces);
-			}*/
   		  	object.traverse(function (child) {
         		if (child instanceof THREE.Mesh) {
-        	    child.geometry.computeFaceNormals();
-        	    child.geometry.computeVertexNormals( true );
-        	    child.material = material;
-        	    group.add(child);
+        	    	child.geometry.computeFaceNormals();
+        	    	child.geometry.computeVertexNormals( true );
+        	    	child.material = material;
+        	    	group.add(child);
         		}
         	
             });
@@ -66,18 +61,13 @@
         }
 	    );
 
-
-		//geometry.computeFaceNormals();
-		//geometry.computeVertexNormals(true);
-		//geometry.addAttribute( 'position', new THREE.BufferAttribute( geometry.vertices, 3 ) );
-		//var batman = new THREE.Mesh(geometry, material);
-		//batman.position.z = -10;
-		//scene.add(batman);
+		var composer = new THREE.EffectComposer(renderer);
+		composer.addPass(new THREE.RenderPass(scene, camera));
 
 		function render(){
 			group.rotation.y += 0.01;
 			requestAnimationFrame(render);
-			renderer.render(scene, camera);
+			composer.render();
 		}
 
 		render();
