@@ -59,6 +59,7 @@
         	    child.geometry.computeFaceNormals();
         	    child.geometry.computeVertexNormals( true );
         	    child.material = material;
+        	    group.add(child);
         		}
         	
             });
@@ -81,7 +82,7 @@
 		mesh2.position.set(300, 0, -800);
 
 		scene.add(mesh2);
-		console.log(man);
+		console.log(group);
 
 		function render(){
 			mesh2.rotation.x += 0.01;
