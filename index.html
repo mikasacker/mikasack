@@ -77,12 +77,13 @@
 		bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.73);
 		composer.addPass(bloomPass);
 
+		renderer.toneMapping = THREE.LinearToneMapping;
+		renderer.toneMappingExposure = Math.pow( 1, 4.0 );
+
 		copyShader = new THREE.ShaderPass(THREE.CopyShader);
 		copyShader.renderToScreen = true;
 		composer.addPass(copyShader);
 		
-		renderer.toneMapping = THREE.LinearToneMapping;
-		renderer.toneMappingExposure = Math.pow( 1, 4.0 );
 
 		//render
 
