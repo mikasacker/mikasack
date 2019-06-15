@@ -57,7 +57,7 @@
   		  	man.traverse(function (child) {
         		if (child instanceof THREE.Mesh) {
         	    child.geometry.computeFaceNormals();
-        	    chlid.geometry.computeVertexNormals( true );
+        	    child.geometry.computeVertexNormals( true );
         	    child.material = material;
         		}
         	
