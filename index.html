@@ -86,7 +86,7 @@
 		effectFXAA.uniforms.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight );
 		composer.addPass(effectFXAA);
 
-		var bloom_pass = new THREE.UnrealBloomPass(new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.73);
+		var bloom_pass = new THREE.UnrealBloomPass(new THREE.Vector2( window.innerWidth, window.innerHeight ), 3, 5, 0.73);
 		composer.addPass(bloom_pass);
 
 		bloom_pass.renderToScreen = true;
