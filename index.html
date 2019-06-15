@@ -54,6 +54,8 @@
 			}
 		});
 
+		geometry.computeFaceNormals();
+		geometry.computeVertexNormals();
 		//geometry.addAttribute( 'position', new THREE.BufferAttribute( geometry.vertices, 3 ) );
 
 		var mesh = new THREE.Mesh(geometry, material);
