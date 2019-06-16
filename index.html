@@ -42,10 +42,11 @@
 		scene.add(light1);
 
 
-		var material = new THREE.MeshLambertMaterial({
+		var material = new THREE.MeshStandardMaterial({
 			color: 0x1e1eff,
-			emissive: 0x4545ff,
-			emissiveIntensity: 50,
+			//emissive: 0x4545ff,
+			roughness: 0.3,
+			metalness: 0.8,
 			wireframe: true
 		});
 
