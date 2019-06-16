@@ -49,7 +49,7 @@
 			wireframe: true
 		});
 
-		var controls = new THREE.OrbitControls( camera, renderer.domElement );
+		//var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
 
 		var loader = new THREE.OBJLoader();
@@ -75,15 +75,15 @@
 		/*composing*/
 
 
-		var composer = new THREE.EffectComposer(renderer);
+		/*var composer = new THREE.EffectComposer(renderer);
 		composer.setSize(512, 512);
 
 		composer.addPass(new THREE.RenderPass(scene, camera));
 
-		/*var glitch_pass = new THREE.GlitchPass();
+		var glitch_pass = new THREE.GlitchPass();
 		composer.addPass(glitch_pass);
 
-		glitch_pass.renderToScreen = true;*/
+		glitch_pass.renderToScreen = true;
 
 		effectFXAA = new THREE.ShaderPass(THREE.FXAAShader);
 		effectFXAA.uniforms.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight );
@@ -96,15 +96,15 @@
 
 		renderer.gammaInput = true;
 		renderer.gammaOutput = true;
-		renderer.toneMappingExposure = Math.pow( 0.9, 7.0 ) ;
+		renderer.toneMappingExposure = Math.pow( 0.9, 7.0 ) ;*/
 
 		//render
 
 		function render(){
 			group.rotation.y += 0.01;
 			requestAnimationFrame(render);
-			//renderer.render(scene, camera);
-			composer.render();
+			renderer.render(scene, camera);
+			//composer.render();
 		}
 
 		render();
