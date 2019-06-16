@@ -22,6 +22,7 @@
 	<script src="JS/RenderPass.js"></script>
 	<script src="JS/GlitchPass.js"></script>
 	<script src="JS/UnrealBloomPass.js"></script>
+	<script src="JS/OrbitControls.js"></script>
 	<script src="JS/OBJLoader.js"></script>
 	<script>
 		var renderer = new THREE.WebGLRenderer({antialias: true});
@@ -47,6 +48,8 @@
 			emissiveIntensity: 10,
 			wireframe: true
 		});
+
+		var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
 
 		var loader = new THREE.OBJLoader();
@@ -93,7 +96,7 @@
 
 		renderer.gammaInput = true;
 		renderer.gammaOutput = true;
-		renderer.toneMappingExposure = Math.pow( 0.9, 4.0 ) ;
+		renderer.toneMappingExposure = Math.pow( 0.9, 7.0 ) ;
 
 		//render
 
